@@ -1,0 +1,19 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+Короче мыслюги разные
+
+<h2>Вот число записей которые тут есть {{ blogs.count }} </h2>
+
+{% for blog in blogs %}
+
+<a href="{% url 'blog:detail' blog.id %}">
+    <h2>{{ blog.title }}</h2>
+</a>
+<h5 class="alert alert-success">{{ blog.date|date:'M d Y'|upper }}</h5>
+<p>{{ blog.description|safe|truncatechars:100 }}</p>
+
+{% endfor %}
+
+{% endblock %}
